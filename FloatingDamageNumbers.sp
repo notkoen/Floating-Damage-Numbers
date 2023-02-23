@@ -141,6 +141,11 @@ public void Event_PlayerHurt(Handle event, const char[] name, bool broadcast)
 		return;
 	}
 
+	if (!g_bDisplay[attacker])
+	{
+		return;
+	}
+
 	int victim = GetClientOfUserId(GetEventInt(event, "userid"));
 	if (!IsClientInGame(attacker))
 	{
@@ -152,12 +157,7 @@ public void Event_PlayerHurt(Handle event, const char[] name, bool broadcast)
 		return;
 	}
 
-	if (!g_bDisplay[attacker])
-	{
-		return;
-	}
-
-	int hitgroup = GetEventInt(event, "hitbroup");
+	int hitgroup = GetEventInt(event, "hitgroup");
 	int health = GetEventInt(event, "health");
 	int damage = GetEventInt(event, "dmg_health");
 
